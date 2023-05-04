@@ -224,15 +224,15 @@ const (
 
 // Toot is a struct to post status.
 type Toot struct {
-	Status      string     `json:"status"`
-	InReplyToID ID         `json:"in_reply_to_id"`
-	MediaIDs    []ID       `json:"media_ids"`
-	Sensitive   bool       `json:"sensitive"`
-	SpoilerText string     `json:"spoiler_text"`
-	Visibility  string     `json:"visibility"`
-	Language    string     `json:"language"`
-	ScheduledAt *time.Time `json:"scheduled_at,omitempty"`
-	Poll        *TootPoll  `json:"poll"`
+	Status      string    `json:"status"`
+	InReplyToID ID        `json:"in_reply_to_id"`
+	MediaIDs    []ID      `json:"media_ids"`
+	Sensitive   bool      `json:"sensitive"`
+	SpoilerText string    `json:"spoiler_text"`
+	Visibility  string    `json:"visibility"`
+	Language    string    `json:"language"`
+	ScheduledAt string    `json:"scheduled_at,omitempty"`
+	Poll        *TootPoll `json:"poll"`
 }
 
 // TootPoll holds information for creating a poll in Toot.

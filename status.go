@@ -422,6 +422,9 @@ func (c *Client) postStatus(ctx context.Context, toot *Toot, update bool, update
 	if toot.SpoilerText != "" {
 		params.Set("spoiler_text", toot.SpoilerText)
 	}
+	if toot.ScheduledAt != "" {
+		params.Set("scheduled_at", toot.ScheduledAt)
+	}
 
 	var status Status
 	var err error
