@@ -117,6 +117,11 @@ type Media struct {
 	Focus       string
 }
 
+// SearchParams is struct to hold search params for performing a search.
+Type SearchParams struct {
+
+}
+
 func (m *Media) bodyAndContentType() (io.Reader, string, error) {
 	var buf bytes.Buffer
 	mw := multipart.NewWriter(&buf)
@@ -460,10 +465,18 @@ func (c *Client) DeleteStatus(ctx context.Context, id ID) error {
 }
 
 // Search search content with query.
-func (c *Client) Search(ctx context.Context, q string, resolve bool) (*Results, error) {
+func (c *Client) Search(ctx context.Context, q string, resolve bool, search_type string, limit int, offset int, min_id string, max_id string, account_id string, exclude_unreviewed bool) (*Results, error) {
 	params := url.Values{}
 	params.Set("q", q)
+	if resolve 
 	params.Set("resolve", fmt.Sprint(resolve))
+	params.Set("type", search_type)
+	params.Set("limit", fmt.Sprint(limit))
+	params.Set("offset", fmt.Sprint(offset))
+	params.Set("min_id", min_id)
+	params.Set("max_id", max_id)
+	params.Set("account_id", account_id)
+	params.Set("exclude_unreviewed", exclude_unreviewed)
 	var results Results
 	err := c.doAPI(ctx, http.MethodGet, "/api/v2/search", params, &results, nil)
 	if err != nil {
